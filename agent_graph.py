@@ -120,12 +120,12 @@ def generate(state):
     documents = state["documents"]
     session_id = state["session_id"]
 
-    if not documents or all(len(doc.page_content.strip()) == 0 for doc in documents):
-        return {
-            "generation": "Sorry, I can only answer questions based on the uploaded documents.",
-            "question": question,
-            "documents": documents
-        }
+    # if not documents or all(len(doc.page_content.strip()) == 0 for doc in documents):
+    #     return {
+    #         "generation": "Sorry, I can only answer questions based on the uploaded documents.",
+    #         "question": question,
+    #         "documents": documents
+    #     }
     
     # Initialize LLM with a safe default model
     groq_api_key = os.environ.get("GROQ_API_KEY")
@@ -237,3 +237,4 @@ def build_graph(checkpointer: InMemorySaver):
 
 
     return workflow.compile(checkpointer=checkpointer)
+
